@@ -59,6 +59,7 @@ GEM
     mocha (0.13.3)
       metaclass (~> 0.0.1)
     multi_json (1.8.2)
+    mysql2 (0.3.13)
     net-ldap (0.3.1)
     nokogiri (1.5.10)
     polyglot (0.3.3)
@@ -130,12 +131,14 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-jdbc-adapter (~> 1.2.6)
+  activerecord-jdbcmysql-adapter
   builder (= 3.0.0)
   capybara (~> 2.0.0)
   coderay (~> 1.0.9)
   fastercsv (~> 1.5.0)
   jquery-rails (~> 2.0.2)
   mocha (~> 0.13.3)
+  mysql2 (~> 0.3.11)
   net-ldap (~> 0.3.1)
   nokogiri (< 1.6.0)
   rack-openid
