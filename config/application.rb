@@ -54,7 +54,6 @@ module RedmineApp
     config.action_controller.include_all_helpers = false
 
     config.session_store :cookie_store, :key => '_redmine_session'
-    config.secret_token = '002b028a0d066ea09a859ab4ead33ee03dffbfce839e86e9039e46cd2082d6563ddc528ca68af918'
 
 
     if File.exists?(File.join(File.dirname(__FILE__), 'additional_environment.rb'))
