@@ -9,6 +9,17 @@ gem "builder", "3.0.0"
 gem "mime-types"
 gem "awesome_nested_set", "2.1.6"
 
+group :development do
+  gem 'quiet_assets'
+  gem 'capistrano'
+  gem 'rvm-capistrano'
+  gem 'net-ssh', '~> 2.7.0'
+  gem 'unicorn_service', require: false
+  gem 'nginx-config', require: false
+end
+# Use unicorn as the app server
+gem 'unicorn', platform:  :ruby
+
 # Optional gem for LDAP authentication
 group :ldap do
   gem "net-ldap", "~> 0.3.1"

@@ -54,6 +54,8 @@ module RedmineApp
 
     config.session_store :cookie_store, :key => '_redmine_session'
 
+    config.secret_token = '5ecb34bd05e8b7719bd74ecf1c286a003fa72a24eac4332e9a512459ed1f3ae6ee88372c6787f1b5de26501012f3563137cb15b0649f51a03b392dcdc40f6de4'
+
     if File.exists?(File.join(File.dirname(__FILE__), 'additional_environment.rb'))
       instance_eval File.read(File.join(File.dirname(__FILE__), 'additional_environment.rb'))
     end
