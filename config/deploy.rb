@@ -38,7 +38,7 @@ after 'deploy', 'deploy:migrate'
 after 'deploy:update', 'deploy:cleanup'
 after 'deploy', 'deploy:restart'
 
-after 'deploy:finalize_update', :roles => :app do
+before 'bundle:install', :roles => :app do
   # Здесь для примера вставлен только один конфиг с приватными данными - database.yml. Обычно для таких вещей создают папку /srv/myapp/shared/config и кладут файлы туда. При каждом деплое создаются ссылки на них в нужные места приложения.
   run "rm -f #{current_release}/config/database.yml"
   run "ln -s #{current_release}/config/database.yml.example #{current_release}/config/database.yml"
@@ -52,7 +52,7 @@ namespace :deploy do
     run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -USR2 `cat #{unicorn_pid}`; else cd #{deploy_to}/current && bundle exec unicorn -c #{unicorn_conf} -E #{rails_env} -D; fi"
   end
   task :start do
-    run "bundle exec unicorn -c #{unicorn_conf} -E #{rails_env} -D"
+    run "cd #{deploy_to}/current && bundle exec unicorn -c #{unicorn_conf} -E #{rails_env} -D"
   end
   task :stop do
     run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
